@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>INICIAR SESIÓN</h2>
+    {% if error %}
+        <p style="color: red">{{ error }}</p>
+    {% endif %}
+    <div>
+        <form action="{{url_for('login_function')}}" method="POST">
+            <div>
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" >
+            </div>
+
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" >
+            </div>
+
+            <div>
+                <button type="submit" value="Iniciar sesión">Iniciar sesión</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        ¿No tienes una cuenta? <a href="{{ url_for('register_function') }}">Regístrate</a>
+    </div>
+
+{% endblock %}

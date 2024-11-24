@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Gestión de series{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:lightblue ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color:white;
+            padding: 20px;
+            border-radius: 10px;
+            }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 10px 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color:darkblue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% block nav %}
+            <h1>Menú principal</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('lista_series') }}">Inicio</a></li>
+                    {% if logged_in %}
+                        <li><a href="{{ url_for('agregar_serie') }}">Agregar Serie</a></li>
+                        <li><a href="{{ url_for('logout_function') }}">Cerrar</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login_function') }}">Acceder</a></li>
+                        <li><a href="{{ url_for('register_function') }}">Registro</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

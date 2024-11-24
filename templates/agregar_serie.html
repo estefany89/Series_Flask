@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Agregar Nueva Serie</h2>
+
+    <form action="{{ url_for('agregar_serie') }}" method="POST">
+        <div>
+            <label for="nombre">Nombre de la serie:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre de la serie" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="sinopsis">Sinopsis:</label>
+            <textarea id="sinopsis" name="sinopsis" placeholder="Escribe la sinopsis..." required></textarea>
+        </div>
+        <br>
+
+        <div>
+            <label for="puntuacion">Puntuación (0-10):</label>
+            <input type="number" id="puntuacion" name="puntuacion" min="0" max="10" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="genero">Género:</label>
+            <input type="text" id="genero" name="genero" placeholder="Género de la serie" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="fecha_estreno">Fecha de estreno:</label>
+            <input type="date" id="fecha_estreno" name="fecha_estreno" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="num_capitulos">Número de capítulos:</label>
+            <input type="number" id="num_capitulos" name="num_capitulos" min="1" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="duracion">Duración de los capítulos (en minutos):</label>
+            <input type="number" id="duracion" name="duracion" min="1" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" name="categoria" required>
+                <option value="Me gustaría ver">Me gustaría ver</option>
+                <option value="Estoy viendo">Estoy viendo</option>
+                <option value="Vistas">Vistas</option>
+            </select>
+        </div>
+        <br>
+
+        <button type="submit">Agregar Serie</button>
+    </form>
+{% endblock %}

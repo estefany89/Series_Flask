@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Mis Series</h2>
+
+    {% if logged_in %}
+        <div>
+            <h3>Series que me gustaría ver</h3>
+            {% if me_gustaria_ver %}
+                <ul>
+                    {% for serie in me_gustaria_ver %}
+                        <li>
+                            <strong>{{ serie['nombre'] }}</strong><br>
+                            <em>{{ serie['genero'] }}</em><br>
+                            Puntuación: {{ serie['puntuacion'] }}/10<br>
+                            Fecha de estreno: {{ serie['fecha_estreno'] }}<br>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No tienes series en esta categoría.</p>
+            {% endif %}
+        </div>
+
+        <div>
+            <h3>Series que estoy viendo</h3>
+            {% if estoy_viendo %}
+                <ul>
+                    {% for serie in estoy_viendo %}
+                        <li>
+                            <strong>{{ serie['nombre'] }}</strong><br>
+                            <em>{{ serie['genero'] }}</em><br>
+                            Puntuación: {{ serie['puntuacion'] }}/10<br>
+                            Fecha de estreno: {{ serie['fecha_estreno'] }}<br>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No tienes series en esta categoría.</p>
+            {% endif %}
+        </div>
+
+        <div>
+            <h3>Series vistas</h3>
+            {% if vistas %}
+                <ul>
+                    {% for serie in vistas %}
+                        <li>
+                            <strong>{{ serie['nombre'] }}</strong><br>
+                            <em>{{ serie['genero'] }}</em><br>
+                            Puntuación: {{ serie['puntuacion'] }}/10<br>
+                            Fecha de estreno: {{ serie['fecha_estreno'] }}<br>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No tienes series en esta categoría.</p>
+            {% endif %}
+        </div>
+
+        <div>
+            <a href="{{ url_for('agregar_serie') }}">Agregar una nueva serie</a>
+        </div>
+
+    {% else %}
+        <p>No has iniciado sesión. <a href="{{ url_for('login_function') }}">Inicia sesión</a> o <a href="{{ url_for('register_function') }}">Regístrate</a></p>
+    {% endif %}
+{% endblock %}
